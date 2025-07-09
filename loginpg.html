@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="./resource/Bootstrap.css">
+    <link rel="stylesheet" href="./resource/Bootstrap.js">
+    <style>
+        body {
+            background: url(./image/libbg.webp) no-repeat;
+            background-size: cover;
+            padding: 11%;
+            font-family: sans-serif;
+        }
+
+        #log {
+            background: transparent;
+            backdrop-filter: blur(20px);
+            border: 2px solid whitesmoke;
+            border-radius: 10px;
+        }
+
+        #log input {
+            border: 1px whitesmoke solid;
+            border-radius: 40px;
+            outline: none;
+            background: transparent;
+            color: white;
+            padding-left: 2%;
+        }
+        #log a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body class=" d-flex  justify-content-center ">
+    <div id="log" class=" container col-sm-10 col-md-8  text-center  ">
+        <h2 class="display-3"> Login</h2>
+        <label for="name" class="form-label">Username:</label>
+        <input type="text" id="name" class="  mt-3 "><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" class="mt-3"><br>
+        <p class="mt-3 me-sm-5"> <label for=""><input type="checkbox">Remember Me ?</label> <a href=""
+                class="float-end ms-lg-5 me-xl-5 text-info ">forget password?</a>
+        </p>
+        <button class="btn btn-success col-6 mb-3" onclick="login()">Login</button><br>
+        <a href="./registerpg.html" >Register Now!</a>
+        <!-- <img src="./registerpg.html" alt=""> -->
+    </div>
+
+
+
+
+
+<script src="./loginreg.js">
+    
+</script>
+</body>
+
+</html>

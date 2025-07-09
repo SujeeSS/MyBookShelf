@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS</title>
+    <link rel="stylesheet" href="../bootstrap/Bootstrap.css">
+    <script src="../bootstrap/Bootstrap.js"></script>
+
+</head>
+
+<body>
+    <div class="row container">
+        <div class="col">
+            <img src="../image/books.jpg" alt="">
+        </div>
+        <!--ADD-->
+        <div class="col">
+            <button onclick=add() class="btn btn-outline-danger">ADD</button>
+        </div>
+        <div class="col">
+            <button onclick=show() class="btn btn-outline-danger">Show</button>
+        </div>
+    </div>
+    <div  id="crd" class=" row container">
+        <!-- <div class="col">
+            <img src="../image/books.jpg" alt="">
+            <p>BookName:</p>
+            <p>AuthorName:</p>
+            <p>BookURL:</p>
+        </div> -->
+    </div>
+
+    <div id="frm" class="container col-6 form-control">
+        <!-- <form action="" class="container col-6 form-control">  don't use form bzc action refresh while submit -->
+        <button onclick="close()" class=" btn btn-outline-danger d-block float-end ">X</button><br>
+        <label for="">Book Name:</label>
+        <input type="text" id="bknm" class="form-control">
+        <label for="">Author Name:</label>
+        <input type="text" id="athm" class="form-control">
+        <label for="">Book URL:</label>
+        <input type="text" id="bkurl" class="form-control">
+        <button onclick="submit()" class="btn btn btn-outline-success  ">Submit</button>
+        <!-- </form> -->
+    </div>
+    <script>
+        const frm = document.getElementById('frm');
+        const bknm = document.getElementById('bknm');
+        const athnm = document.getElementById('athm');
+        const bkurl = document.getElementById('bkurl');
+        const apiURL = "https://67bef506b2320ee05012153e.mockapi.io/Datas"
+        frm.style.display = 'none';
+        function add() {
+            frm.style.display = 'block';
+        }
+        function close() {
+            frm.style.display = 'none';
+        }
+        async function submit() {
+            const dtils = {
+                BookName: bknm.value,
+                AuthorName: athm.value,
+                BookURL: bkurl.value
+            }
+            // console.log(dtils);
+
+                const pdt={
+                    method:'Post',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify(dtils)
+                }
+                await fetch(apiURL,pdt)
+                // alert("done")
+
+            frm.style.display = 'none';
+        }
+        async function show() {
+             const DBfile = await fetch(apiURL);
+             const val= await DBfile.json();
+             const crd= document.getElementById('crd');
+             console.log(val);
+             crd.innerHTML=  val.map((x)=>
+             `<div class="col  border border-dark">
+                <img src="${x.BookURL}" alt="">
+                <p>BookName:${x.BookName}</p>
+                <p>AuthorName:${x.AuthorName}</p>
+                <p>BookURL:${x.BookURL}</p>
+              </div>
+             `
+            )
+            
+        }
+        // show()
+    </script>
+</body>
+
+</html>
