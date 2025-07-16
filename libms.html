@@ -7,7 +7,6 @@
     <title>LMS</title>
     <link rel="stylesheet" href="../bootstrap/Bootstrap.css">
     <script src="../bootstrap/Bootstrap.js"></script>
-
 </head>
 
 <body>
@@ -63,7 +62,6 @@
                 AuthorName: athm.value,
                 BookURL: bkurl.value
             }
-            // console.log(dtils);
 
                 const pdt={
                     method:'Post',
@@ -73,8 +71,6 @@
                     body:JSON.stringify(dtils)
                 }
                 await fetch(apiURL,pdt)
-                // alert("done")
-
             frm.style.display = 'none';
         }
         async function show() {
