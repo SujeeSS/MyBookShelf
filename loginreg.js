@@ -17,8 +17,8 @@ async function register() {
     }
     await fetch(DBURL, pst);
     alert("Done");
-
 }
+
 async function login() {
     const name = document.getElementById('name');  
     const password = document.getElementById('password')
